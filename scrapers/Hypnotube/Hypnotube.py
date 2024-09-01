@@ -68,10 +68,8 @@ def scrape_search(query):
     item_cols = soup.find_all('div', class_='item-col col')
     refactored_json = []
     for item_col in item_cols:
-        log.error(item_col)
         # Now find the item-inner-col inner-col within each item-col col
         card = item_col.find('div', class_='item-inner-col inner-col')
-        log.error(card)
         if card:
             title_tag = card.find('a', href=True, title=True)
             title = title_tag.get('title')
@@ -87,7 +85,6 @@ def scrape_search(query):
                 "url": url,
                 "image": image_src
             }
-            log.error(refactored_data)
             refactored_json.append(refactored_data)
         
     
